@@ -1,4 +1,12 @@
 'use client';
+import { toast } from 'sonner';
+
+// --- CONFIGURACIÓN DE NOTIFICACIONES ---
+// Podés cambiar estos valores a 'true' para activar el feedback en la demo
+const CONFIG = {
+  enableQuantityNotifications: false, 
+  enableDeleteNotification: true,
+};
 
 interface CartItem {
   id: number;
@@ -87,13 +95,44 @@ export default function CartDrawer({
                     <p className="text-xs text-amber-800 font-medium mt-0.5">{item.priceString} c/u</p>
                     
                     <div className="flex items-center gap-1.5 mt-2.5">
-                      <button onClick={() => onMinusItem(item.id)} className="w-6 h-6 flex items-center justify-center bg-[#ebe6dd] hover:bg-neutral-200 rounded-lg text-xs font-bold text-neutral-700 transition-colors cursor-pointer">-</button>
+                      <button 
+                        onClick={() => {
+                          onMinusItem(item.id);
+                          if (CONFIG.enableQuantityNotifications) {
+                            toast("Carrito", { description: `Redujiste la cantidad de ${item.name}` });
+                          }
+                        }} 
+                        className="w-6 h-6 flex items-center justify-center bg-[#ebe6dd] hover:bg-neutral-200 rounded-lg text-xs font-bold text-neutral-700 transition-colors cursor-pointer"
+                      >-</button>
+                      
                       <span className="text-xs font-bold px-2 w-6 text-center text-neutral-900">{item.quantity}</span>
-                      <button onClick={() => onAddItem(item)} className="w-6 h-6 flex items-center justify-center bg-[#ebe6dd] hover:bg-neutral-200 rounded-lg text-xs font-bold text-neutral-700 transition-colors cursor-pointer">+</button>
+                      
+                      <button 
+                        onClick={() => {
+                          onAddItem(item);
+                          if (CONFIG.enableQuantityNotifications) {
+                            toast("Carrito", { description: `Aumentaste la cantidad de ${item.name}` });
+                          }
+                        }} 
+                        className="w-6 h-6 flex items-center justify-center bg-[#ebe6dd] hover:bg-neutral-200 rounded-lg text-xs font-bold text-neutral-700 transition-colors cursor-pointer"
+                      >+</button>
                     </div>
                   </div>
 
-                  <button onClick={() => onRemoveItem(item.id)} className="absolute top-3 right-3 text-neutral-400 hover:text-rose-600 text-xs p-1 transition-colors cursor-pointer">✕</button>
+                  <button 
+                    onClick={() => {
+                      onRemoveItem(item.id);
+                      if (CONFIG.enableDeleteNotification) {
+                        toast("Producto eliminado", {
+                          description: `${item.name} se quitó del carrito.`,
+                          className: 'border-l-4 border-l-rose-400',
+                        });
+                      }
+                    }} 
+                    className="absolute top-3 right-3 text-neutral-400 hover:text-rose-600 text-xs p-1 transition-colors cursor-pointer"
+                  >
+                    ✕
+                  </button>
                 </div>
               ))
             )}
