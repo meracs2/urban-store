@@ -1,5 +1,6 @@
 'use client';
 import './globals.css';
+import { Toaster } from 'sonner';
 import Navbar from './components/Navbar';
 import CartDrawer from './components/CartDrawer';
 import { CartProvider, useCart } from './components/CartContext';
@@ -25,6 +26,21 @@ function LayoutComponent({ children }: { children: React.ReactNode }) {
       />
 
       <main>{children}</main>
+      
+      {/* Sistema de notificaciones con estética orgánica */}
+      <Toaster 
+        position="bottom-right" 
+        richColors={false} 
+        toastOptions={{
+          style: {
+            background: '#ffffff',
+            border: '1px solid #e5e5e5',
+            color: '#404040',
+            fontFamily: 'inherit',
+          },
+          className: 'border-l-4 border-l-[#b07d4e]',
+        }}
+      />
     </body>
   );
 }
