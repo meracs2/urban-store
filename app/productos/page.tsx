@@ -12,7 +12,7 @@ const productosDatos = [
   { id: 4, nombre: "Camperón Puffer Winter", categoria: "camperas", precio: 65000, imagen: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800", desc: "Térmica e impermeable, máxima protección." },
   { id: 5, nombre: "Zapatillas Street Retro", categoria: "zapatillas", precio: 58000, imagen: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800", desc: "Plataforma urbana con cordones reforzados y gamuza." },
   { id: 6, nombre: "Zapatos Derby Cuero", categoria: "zapatos", precio: 72000, imagen: "https://images.unsplash.com/photo-1533867617858-e7b97e060509?w=800", desc: "Cuero vacuno legítimo, terminación artesanal premium." },
-  { id: 7, nombre: "Set Invernal Masculino", categoria: "gorros", precio: 24000, imagen: "https://images.unsplash.com/photo-1576871337632-b9a64c4c0a8a?w=800", desc: "Combo de abrigo completo con gorro de lana, bufanda térmica y guantes reforzados." }
+  { id: 7, nombre: "Set Invernal Masculino", categoria: "gorros", precio: 24000, imagen: "/images/set-invernal.jpg", desc: "Combo de abrigo completo con gorro de lana, bufanda térmica y guantes reforzados." }
 ];
 
 export default function ProductosPage() {

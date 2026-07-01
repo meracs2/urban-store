@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import AddToCartButton from './AddToCartButton';
 
 const productosDatos = [
   { id: 1, nombre: "Buzo Oversize Hoodie", precio: 32000, imagen: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=800", desc: "Frisa pesada premium, ideal para el frío." },
@@ -8,7 +9,7 @@ const productosDatos = [
   { id: 4, nombre: "Camperón Puffer Winter", precio: 65000, imagen: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800", desc: "Térmica e impermeable, máxima protección." },
   { id: 5, nombre: "Zapatillas Street Retro", precio: 58000, imagen: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800", desc: "Plataforma urbana con cordones reforzados y gamuza." },
   { id: 6, nombre: "Zapatos Derby Cuero", precio: 72000, imagen: "https://images.unsplash.com/photo-1533867617858-e7b97e060509?w=800", desc: "Cuero vacuno legítimo, terminación artesanal premium." },
-  { id: 7, nombre: "Set Invernal Masculino", precio: 24000, imagen: "https://images.unsplash.com/photo-1576871337632-b9a64c4c0a8a?w=800", desc: "Combo de abrigo completo con gorro de lana, bufanda térmica y guantes reforzados." }
+  { id: 7, nombre: "Set Invernal Masculino", precio: 24000, imagen: "/images/set-invernal.jpg", desc: "Combo de abrigo completo con gorro de lana, bufanda térmica y guantes reforzados." }
 ];
 
 export default async function DetalleProducto({ params }: { params: Promise<{ id: string }> }) {
@@ -32,7 +33,8 @@ export default async function DetalleProducto({ params }: { params: Promise<{ id
               src={producto.imagen} 
               alt={producto.nombre} 
               fill
-              className="object-cover" 
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
 
@@ -45,9 +47,7 @@ export default async function DetalleProducto({ params }: { params: Promise<{ id
               <p className="text-neutral-600 leading-relaxed">{producto.desc}</p>
             </div>
 
-            <button className="mt-10 w-full bg-neutral-900 hover:bg-amber-800 text-white font-bold py-4 rounded-xl transition-colors shadow-lg cursor-pointer">
-              Agregar al carrito
-            </button>
+            <AddToCartButton producto={producto} />
           </div>
         </div>
       </div>
