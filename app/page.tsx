@@ -70,37 +70,56 @@ export default function LandingPage() {
           100% { transform: translateX(-50%); }
         }
         .animacion-carrusel-activo {
-          animation: carruselLiquido 22s linear infinite; /* ⏱️ Ajustá este número (ej: 18s) si lo querés aún más rápido */
+          animation: carruselLiquido 22s linear infinite;
         }
         .animacion-carrusel-pausado {
           animation-play-state: paused;
         }
       `}</style>
 
-      {/* 1. HERO SECTION */}
-      <section className="relative bg-[#ebe6dd] py-20 px-6 text-center overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[radial-gradient(#b45309_1px,transparent_1px)] [background-size:16px_16px]"></div>
+      {/* 1. HERO SECTION CON PALETA ORGÁNICA REFINADA (MUESTRA DE LA FOTO) */}
+      <section className="relative h-[85vh] min-h-[550px] w-full flex items-center justify-center overflow-hidden bg-neutral-950 mt-12">
         
-        <div className="max-w-3xl mx-auto relative z-10">
-          <span className="text-amber-800 bg-amber-100/80 border border-amber-200/50 font-bold text-xs tracking-widest uppercase px-3 py-1.5 rounded-full">
+        {/* Imagen de Fondo (Perchero de Invierno) */}
+        <div className="absolute inset-0 w-full h-full z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?q=80&w=1600&auto=format&fit=crop" 
+            alt="Perchero con Outfit Urbano de Invierno" 
+            className="w-full h-full object-cover object-center scale-102"
+          />
+          {/* Capa oscura texturizada para amalgamar los elementos */}
+          <div className="absolute inset-0 bg-neutral-950/60 backdrop-blur-[0.5px]"></div>
+        </div>
+
+        {/* Bloque de Texto y Acciones */}
+        <div className="relative z-10 max-w-2xl mx-auto text-center px-6 flex flex-col items-center">
+          
+          {/* Tag superior en tono habano/tabaco */}
+          <span className="bg-[#8c6239]/90 text-[#f7f5f0] border border-[#a67c52]/30 font-bold text-[10px] md:text-xs tracking-widest uppercase px-3.5 py-1 rounded-full shadow-sm mb-5">
             Colección Invierno 2026
           </span>
-          <h1 className="text-4xl md:text-6xl font-extrabold mt-5 text-neutral-900 tracking-tight">
-            Elevá tu estilo bajo cero
+          
+          {/* Título en Blanco Hueso con acento Camel Orgánico */}
+          <h1 className="text-4xl md:text-6xl font-black text-stone-100 tracking-tight leading-tight uppercase drop-shadow-sm">
+            Elevá tu estilo <br />
+            <span className="text-[#d4a373]">bajo cero</span>
           </h1>
-          <p className="mt-4 text-base md:text-lg text-neutral-600 max-w-xl mx-auto">
+          
+          <p className="mt-4 text-sm md:text-lg text-stone-300/90 max-w-md font-medium drop-shadow-sm">
             Descubrí prendas diseñadas para el frío con texturas premium y la paleta de colores más buscada de la temporada.
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+          
+          {/* Botones integrados a la paleta tierra */}
+          <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3 w-full max-w-xs sm:max-w-none">
             <Link 
               href="/productos" 
-              className="bg-amber-800 hover:bg-amber-900 text-white font-semibold px-8 py-3.5 rounded-xl transition shadow-md shadow-amber-800/20 text-center"
+              className="bg-[#b07d4e] hover:bg-[#966437] text-stone-50 font-bold px-7 py-3.5 rounded-xl transition shadow-md text-center text-xs md:text-sm cursor-pointer"
             >
               Ver Catálogo Completo
             </Link>
             <a 
               href="#combos" 
-              className="bg-white hover:bg-neutral-50 text-neutral-800 font-semibold px-8 py-3.5 rounded-xl transition border border-neutral-200 text-center"
+              className="bg-white/5 hover:bg-white/10 text-stone-200 font-bold px-7 py-3.5 rounded-xl transition border border-stone-200/20 backdrop-blur-md text-center text-xs md:text-sm cursor-pointer"
             >
               Ver Combos Especiales
             </a>
@@ -108,7 +127,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* 2. CARRUSEL LÍQUIDO CONTINUO (MÁXIMO DINAMISMO) */}
+      {/* 2. CARRUSEL LÍQUIDO CONTINUO */}
       <section id="combos" className="py-16 overflow-hidden max-w-7xl mx-auto">
         <div className="flex justify-between items-end mb-8 px-6">
           <div>
@@ -129,7 +148,7 @@ export default function LandingPage() {
           onTouchStart={() => setIsPaused(true)}
           onTouchEnd={() => setIsPaused(false)}
         >
-          {/* Degradados laterales estéticos para dar profundidad */}
+          {/* Degradados laterales estéticos */}
           <div className="absolute top-0 left-0 w-16 h-full bg-gradient-to-r from-[#fcfbf9] to-transparent z-10 pointer-events-none hidden md:block"></div>
           <div className="absolute top-0 right-0 w-16 h-full bg-gradient-to-l from-[#fcfbf9] to-transparent z-10 pointer-events-none hidden md:block"></div>
 
@@ -214,7 +233,7 @@ export default function LandingPage() {
                   <p className="text-xs opacity-80 mt-1">{cat.desc}</p>
                 </div>
                 <span className="text-xs font-bold uppercase tracking-wider group-hover:translate-x-1.5 transition-transform flex items-center gap-1">
-                  Explorar Colección →
+                  Explore Colección →
                 </span>
               </Link>
             ))}
