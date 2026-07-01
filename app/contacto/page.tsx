@@ -46,7 +46,7 @@ export default function ContactoPage() {
             <h2 className="text-2xl font-extrabold text-neutral-900 mt-4 tracking-tight">
               Ponete en contacto
             </h2>
-            <p className="mt-2 text-sm text-neutral-600">
+            <p className="mt-2 text-sm text-neutral-900">
               ¿Tuviste un problema con tu combo o buscás información sobre envíos? Escribinos.
             </p>
           </div>
@@ -61,7 +61,7 @@ export default function ContactoPage() {
         <div className="md:col-span-3 p-8 sm:p-10">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-neutral-600 mb-1">Nombre</label>
+              <label className="block text-xs font-bold uppercase tracking-wider text-neutral-900 mb-1">Nombre</label>
               <input
                 type="text"
                 name="nombre"
@@ -74,7 +74,7 @@ export default function ContactoPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-neutral-600 mb-1">Email</label>
+              <label className="block text-xs font-bold uppercase tracking-wider text-neutral-900 mb-1">Email</label>
               <input
                 type="email"
                 name="email"
@@ -87,7 +87,7 @@ export default function ContactoPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-neutral-600 mb-1">Motivo</label>
+              <label className="block text-xs font-bold uppercase tracking-wider text-neutral-900 mb-1">Motivo</label>
               <select
                 name="asunto"
                 value={formData.asunto}
@@ -101,7 +101,7 @@ export default function ContactoPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-neutral-600 mb-1">Mensaje</label>
+              <label className="block text-xs font-bold uppercase tracking-wider text-neutral-900 mb-1">Mensaje</label>
               <textarea
                 name="mensaje"
                 required

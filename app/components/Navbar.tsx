@@ -44,7 +44,7 @@ export default function Navbar({ cartCount, onCartClick }: NavbarProps) {
           </div>
 
           {/* ENLACES ESCRITORIO: Invisibles en celu, visibles en PC */}
-          <div className="hidden md:flex items-center gap-8 font-medium text-sm text-neutral-600">
+          <div className="hidden md:flex items-center gap-8 font-medium text-sm text-neutral-900">
             <Link href="/" className="hover:text-neutral-950 transition">Inicio</Link>
             <Link href="/productos" className="hover:text-neutral-950 transition">Productos</Link>
             <Link href="/contacto" className="hover:text-neutral-950 transition">Contacto</Link>

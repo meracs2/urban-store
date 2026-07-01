@@ -72,7 +72,7 @@ export default function CartDrawer({
             <h2 className="text-lg font-black tracking-wide text-neutral-900 uppercase">
               Tu <span className="text-amber-800">Carrito</span>
             </h2>
-            <button onClick={onClose} className="text-neutral-400 hover:text-neutral-600 text-sm font-semibold p-2 transition-colors cursor-pointer">
+            <button onClick={onClose} className="text-neutral-400 hover:text-neutral-900 text-sm font-semibold p-2 transition-colors cursor-pointer">
               Cerrar ✕
             </button>
           </div>
@@ -142,7 +142,7 @@ export default function CartDrawer({
         {cartItems.length > 0 && (
           <div className="border-t border-neutral-200 pt-4 space-y-4">
             <div className="flex justify-between items-baseline font-bold text-lg">
-              <span className="text-neutral-500 text-sm uppercase tracking-wider">Total Estimado:</span>
+              <span className="text-neutral-900 text-sm uppercase tracking-wider">Total Estimado:</span>
               <span className="text-neutral-900 text-2xl font-black tracking-tight">{formattedTotal}</span>
             </div>
             

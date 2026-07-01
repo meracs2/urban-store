@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link'; // Importante para la navegación
+import Link from 'next/link';
 import { useCart } from '../components/CartContext';
 import { toast } from 'sonner';
 
@@ -17,44 +17,74 @@ const productosDatos = [
 
 export default function ProductosPage() {
   const [categoriaActiva, setCategoriaActiva] = useState('todos');
-  const { addItem } = useCart();
+  const { cartItems, addItem, minusItem } = useCart();
 
   const filtrados = categoriaActiva === 'todos' ? productosDatos : productosDatos.filter(p => p.categoria === categoriaActiva);
 
   return (
     <div className="bg-[#fcfbf9] min-h-screen pt-24 pb-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-black text-center mb-12">Catálogo Urban</h1>
+        {/* ARREGLADO: Ahora el título es negro puro gracias a text-neutral-950 */}
+        <h1 className="text-4xl font-black text-center text-neutral-950 mb-12">Catálogo Urban</h1>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filtrados.map((p) => (
-            <Link key={p.id} href={`/productos/${p.id}`} className="block group">
-              <div className="bg-white rounded-2xl shadow-sm border border-neutral-100 p-4 hover:shadow-lg transition-all duration-300">
-                <div className="h-72 relative rounded-xl overflow-hidden mb-4 bg-neutral-100">
-                  <Image 
-                    src={p.imagen} 
-                    alt={p.nombre} 
-                    fill 
-                    className="object-cover group-hover:scale-105 transition-transform duration-500" 
-                  />
+          {filtrados.map((p) => {
+            // Buscamos si el producto ya está en el carrito para esta tarjeta
+            const itemEnCarrito = cartItems.find((item) => item.id === p.id);
+
+            return (
+              <Link key={p.id} href={`/productos/${p.id}`} className="block group">
+                <div className="bg-white rounded-2xl shadow-sm border border-neutral-100 p-4 hover:shadow-lg transition-all duration-300 flex flex-col h-full justify-between">
+                  <div>
+                    <div className="h-72 relative rounded-xl overflow-hidden mb-4 bg-neutral-100">
+                      <Image 
+                        src={p.imagen} 
+                        alt={p.nombre} 
+                        fill 
+                        className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                      />
+                    </div>
+                    <h3 className="font-bold text-neutral-900 group-hover:text-amber-800 transition-colors">{p.nombre}</h3>
+                    <p className="text-sm text-neutral-900 mb-4">{p.desc}</p>
+                  </div>
+
+                  {/* CONTROL DINÁMICO DE BOTONES */}
+                  <div className="mt-2">
+                    {itemEnCarrito ? (
+                      <div 
+                        onClick={(e) => e.preventDefault()} // Evita la navegación al hacer clic en los controles
+                        className="flex items-center justify-between bg-neutral-100 p-1.5 rounded-xl border border-neutral-200"
+                      >
+                        <button 
+                          onClick={() => minusItem(p.id)}
+                          className="bg-white px-4 py-2 rounded-lg shadow-sm font-bold text-neutral-900 hover:bg-neutral-50 cursor-pointer"
+                        > - </button>
+                        
+                        <span className="font-black text-xl text-neutral-950">{itemEnCarrito.quantity}</span>
+                        
+                        <button 
+                          onClick={() => addItem(p)}
+                          className="bg-white px-4 py-2 rounded-lg shadow-sm font-bold text-neutral-900 hover:bg-neutral-50 cursor-pointer"
+                        > + </button>
+                      </div>
+                    ) : (
+                      <div 
+                        onClick={(e) => {
+                          e.preventDefault(); 
+                          addItem(p);
+                          toast.success(`¡Agregado al carrito!`, { description: p.nombre });
+                        }}
+                        className="w-full bg-neutral-900 text-white text-center py-3 rounded-xl font-bold hover:bg-[#b07d4e] transition cursor-pointer"
+                      >
+                        Agregar al carrito
+                      </div>
+                    )}
+                  </div>
+
                 </div>
-                <h3 className="font-bold text-neutral-900 group-hover:text-amber-800 transition-colors">{p.nombre}</h3>
-                <p className="text-sm text-neutral-500 mb-4">{p.desc}</p>
-                <div 
-                  onClick={(e) => {
-                    e.preventDefault(); // Evita que al apretar "Agregar" navegue al detalle
-                    addItem(p);
-                    toast.success(`¡Agregado al carrito!`, { 
-                      description: p.nombre 
-                    });
-                  }}
-                  className="w-full bg-neutral-900 text-white text-center py-3 rounded-xl font-bold hover:bg-[#b07d4e] transition cursor-pointer"
-                >
-                  Agregar al carrito
-                </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </div>

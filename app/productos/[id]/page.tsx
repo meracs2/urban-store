@@ -23,7 +23,7 @@ export default async function DetalleProducto({ params }: { params: Promise<{ id
   return (
     <main className="min-h-screen bg-[#fcfbf9] pt-28 pb-16 px-6 font-sans">
       <div className="max-w-4xl mx-auto">
-        <a href="/productos" className="text-neutral-500 hover:text-amber-800 transition-colors text-sm font-semibold mb-8 block">
+        <a href="/productos" className="text-neutral-900 hover:text-amber-800 transition-colors text-sm font-semibold mb-8 block">
           ← Volver al catálogo
         </a>
 
@@ -44,7 +44,7 @@ export default async function DetalleProducto({ params }: { params: Promise<{ id
             
             <div className="mt-6 space-y-4">
               <h3 className="font-bold text-neutral-900 uppercase tracking-wider text-xs">Descripción</h3>
-              <p className="text-neutral-600 leading-relaxed">{producto.desc}</p>
+              <p className="text-neutral-900 leading-relaxed">{producto.desc}</p>
             </div>
 
             <AddToCartButton producto={producto} />

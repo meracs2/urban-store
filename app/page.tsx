@@ -134,7 +134,7 @@ export default function LandingPage() {
             <h2 className="text-2xl md:text-3xl font-bold text-neutral-900 tracking-tight">
               Combos Destacados ❄️
             </h2>
-            <p className="text-neutral-500 text-sm mt-1">
+            <p className="text-neutral-900 text-sm mt-1">
               Desplazamiento continuo premium. Apoyá el mouse o mantené presionado para pausar.
             </p>
           </div>
@@ -179,7 +179,7 @@ export default function LandingPage() {
                   <h3 className="font-bold text-base text-neutral-900 group-hover:text-amber-800 transition truncate">
                     {combo.nombre}
                   </h3>
-                  <p className="text-xs text-neutral-500 mt-1 line-clamp-2 min-h-[32px]">
+                  <p className="text-xs text-neutral-900 mt-1 line-clamp-2 min-h-[32px]">
                     {combo.descripcion}
                   </p>
                   
@@ -212,7 +212,7 @@ export default function LandingPage() {
             <h2 className="text-2xl md:text-3xl font-bold text-neutral-900">
               Comprá por Categorías
             </h2>
-            <p className="text-neutral-500 text-sm mt-1 max-w-sm mx-auto">
+            <p className="text-neutral-900 text-sm mt-1 max-w-sm mx-auto">
               Navegá de forma directa hacia los abrigos y prendas esenciales.
             </p>
           </div>
