@@ -2,27 +2,42 @@ import Link from 'next/link';
 
 interface NavbarProps {
   cartCount: number;
-  onCartClick: () => void; // Nueva función para avisar que se cliqueó el carrito
+  onCartClick: () => void;
 }
 
 export default function Navbar({ cartCount, onCartClick }: NavbarProps) {
   return (
-    <nav className="w-full bg-gray-900 border-b border-gray-800 text-white px-6 py-4 flex justify-between items-center fixed top-0 left-0 z-50">
-      <div className="text-xl font-bold tracking-wider text-blue-500">
-        URBAN STORE
+    <nav className="w-full bg-[#fcfbf9]/90 backdrop-blur-md border-b border-neutral-200/60 text-neutral-800 px-6 py-4 flex justify-between items-center fixed top-0 left-0 z-50">
+      
+      {/* LOGO */}
+      <div className="text-xl font-black tracking-wider text-neutral-900 uppercase">
+        URBAN <span className="text-amber-800">STORE</span>
       </div>
-      <div className="flex gap-6 text-sm font-medium text-gray-300">
-        <Link href="#" className="hover:text-white transition-colors">Inicio</Link>
-        <Link href="#" className="hover:text-white transition-colors">Productos</Link>
-        <Link href="/contacto" className="hover:text-white transition-colors">Contacto</Link>
+      
+      {/* MENÚ DE NAVEGACIÓN */}
+      <div className="flex gap-6 text-sm font-semibold text-neutral-600">
+        <Link href="/" className="hover:text-amber-800 transition-colors">
+          Inicio
+        </Link>
+        <Link href="/productos" className="hover:text-amber-800 transition-colors">
+          Productos
+        </Link>
+        <Link href="/contacto" className="hover:text-amber-800 transition-colors">
+          Contacto
+        </Link>
       </div>
-      {/* Al hacer clic, se activa la función onCartClick */}
+      
+      {/* BOTÓN CARRITO */}
       <button 
         onClick={onCartClick}
-        className="text-sm bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md font-medium cursor-pointer transition-colors"
+        className="text-xs bg-neutral-900 hover:bg-amber-800 text-white px-4 py-2 rounded-xl font-semibold cursor-pointer transition-colors shadow-sm active:scale-95 flex items-center gap-1.5"
       >
-        Carrito ({cartCount})
+        <span>Carrito</span>
+        <span className="bg-white text-neutral-900 text-[10px] font-bold px-1.5 py-0.5 rounded-md min-w-[18px] text-center">
+          {cartCount}
+        </span>
       </button>
+
     </nav>
   );
 }
